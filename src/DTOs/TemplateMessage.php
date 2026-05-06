@@ -32,12 +32,12 @@ class TemplateMessage
         $this->to = is_array($to) ? $to : [$to];
 
         $this->template = $params['template'] ?? '';
-        $this->data     = $params['data'] ?? [];
+        $this->data = $params['data'] ?? [];
         $this->channels = $params['channels'] ?? [];
-        $this->subject  = $params['subject'] ?? null;
-        $this->body     = $params['body'] ?? null;
-        $this->otp      = $params['otp'] ?? null;
-        $this->name     = $params['name'] ?? null;
+        $this->subject = $params['subject'] ?? null;
+        $this->body = $params['body'] ?? null;
+        $this->otp = $params['otp'] ?? null;
+        $this->name = $params['name'] ?? null;
     }
 
     public function toArray(): array
@@ -48,9 +48,9 @@ class TemplateMessage
         );
 
         $payload = [
-            'recipients'    => $recipients,
+            'recipients' => $recipients,
             'module_name' => $this->template,
-            'dynamic_data'  => $this->data,
+            'dynamic_data' => $this->data,
         ];
 
         if (!empty($this->channels)) {
