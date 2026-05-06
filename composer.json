@@ -1,0 +1,30 @@
+{
+    "name": "pippa/notification-sdk-curl",
+    "description": "Notification Service SDK for plain PHP — zero dependencies, pure cURL",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rajoni Akter",
+            "email": "rajoni.pippa@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pippa\\NotificationSdkCurl\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pippa\\NotificationSdkCurl\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
