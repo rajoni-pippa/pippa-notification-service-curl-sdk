@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\NotificationSdkCurl\DTOs;
+namespace Pippa\NotificationSdkCurl\DTOs;
 
 /**
  * Represents a template-based notification message.
