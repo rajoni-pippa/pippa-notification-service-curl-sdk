@@ -49,7 +49,7 @@ class TemplateMessage
 
         $payload = [
             'recipients'    => $recipients,
-            'template_name' => $this->template,
+            'module_name' => $this->template,
             'dynamic_data'  => $this->data,
         ];
 
