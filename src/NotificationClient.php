@@ -8,20 +8,7 @@ use Pippa\NotificationSdkCurl\DTOs\TemplateMessage;
 use Pippa\NotificationSdkCurl\Exceptions\NotificationException;
 use Pippa\NotificationSdkCurl\Requests\SendMessageRequest;
 
-/**
- * NotificationClient — Plain PHP / cURL
- *
- * Zero dependencies. Works in any PHP 8.1+ environment.
- * No Laravel, no Guzzle required.
- *
- * Usage:
- *   $client = new NotificationClient(
- *       baseUrl:   'https://notification.yourcompany.com',
- *       apiKey:    'your_api_key',
- *       secretKey: 'your_secret_key',
- *   );
- *   $client->sendEmail('user@example.com', 'welcome_email', ['name' => 'Rahim']);
- */
+
 class NotificationClient
 {
     protected string $baseUrl;
@@ -41,29 +28,13 @@ class NotificationClient
         $this->timeout = $timeout;
     }
 
-    // =========================================================
-    //  PUBLIC API  (Courier-style)
-    // =========================================================
 
-    /**
-     * Send a notification using full SendMessageRequest control.
-     *
-     * @throws NotificationException
-     */
     public function send(SendMessageRequest $request): NotificationResponse
     {
         return $this->post('/v1/notification/send', $request->toArray());
     }
 
-    // =========================================================
-    //  SHORTCUT HELPERS
-    // =========================================================
 
-    /**
-     * Send an email notification via template.
-     *
-     * @throws NotificationException
-     */
     public function sendEmail(
         string $email,
         string $template,
@@ -80,11 +51,6 @@ class NotificationClient
         ]));
     }
 
-    /**
-     * Send an SMS notification via template.
-     *
-     * @throws NotificationException
-     */
     public function sendSms(
         string $phone,
         string $template,
@@ -101,11 +67,7 @@ class NotificationClient
         ]));
     }
 
-    /**
-     * Send an in-app notification via template.
-     *
-     * @throws NotificationException
-     */
+
     public function sendInApp(
         string $userId,
         string $template,
@@ -122,12 +84,7 @@ class NotificationClient
         ]));
     }
 
-    /**
-     * Send to multiple recipients/channels at once.
-     *
-     * @param  Recipient[]  $recipients
-     * @throws NotificationException
-     */
+
     public function sendMulti(
         array $recipients,
         string $template,
@@ -144,13 +101,7 @@ class NotificationClient
         ]));
     }
 
-    // =========================================================
-    //  HTTP — pure cURL, no external dependencies
-    // =========================================================
 
-    /**
-     * @throws NotificationException
-     */
     protected function post(string $endpoint, array $payload): NotificationResponse
     {
         $url = $this->baseUrl . $endpoint;

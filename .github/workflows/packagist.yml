@@ -1,0 +1,15 @@
+name: Update Packagist
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  packagist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Packagist
+        run: |
+          curl -X POST "https://packagist.org/api/update-package?username=rajoni-pippa&apiToken=${{ secrets.PACKAGIST_TOKEN }}" \
+          -d '{"repository":{"url":"https://github.com/rajoni-pippa/pippa-notification-service-curl-sdk"}}' \
+          -H "Content-Type: application/json"
