@@ -22,7 +22,6 @@ require 'vendor/autoload.php';
 use pippa/NotificationSdkCurl\NotificationClient;
 
 $client = new NotificationClient(
-    baseUrl:   'https://notification.yourcompany.com',
     apiKey:    'your_api_key',
     secretKey: 'your_secret_key',
 );
@@ -110,7 +109,7 @@ try {
 
 | Method | Description |
 |---|---|
-| `send(SendMessageRequest)` | Full control, Courier-style |
+| `send(SendMessageRequest)` | Full control|
 | `sendEmail($email, $template, $data)` | Send email via template |
 | `sendSms($phone, $template, $data)` | Send SMS via template |
 | `sendInApp($userId, $template, $data)` | Send in-app notification |
