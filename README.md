@@ -8,7 +8,7 @@ Pure PHP SDK for the **Notification Service** API.
 ## Installation
 
 ```bash
-composer require pippa/notification-sdk-curl
+composer require Pippa\notification-sdk-curl
 ```
 
 ---
@@ -19,7 +19,7 @@ composer require pippa/notification-sdk-curl
 <?php
 require 'vendor/autoload.php';
 
-use pippa/NotificationSdkCurl\NotificationClient;
+use Pippa\NotificationSdkCurl\NotificationClient;
 
 $client = new NotificationClient(
     apiKey:    'your_api_key',
@@ -64,9 +64,9 @@ $response = $client->sendInApp(
 ### Multi-channel (Courier-style)
 
 ```php
-use pippa/NotificationSdkCurl\Requests\SendMessageRequest;
-use pippa/NotificationSdkCurl\DTOs\TemplateMessage;
-use pippa/NotificationSdkCurl\DTOs\Recipient;
+use Pippa\NotificationSdkCurl\Requests\SendMessageRequest;
+use Pippa\NotificationSdkCurl\DTOs\TemplateMessage;
+use Pippa\NotificationSdkCurl\DTOs\Recipient;
 
 $response = $client->send(
     new SendMessageRequest([
@@ -92,7 +92,7 @@ if ($response->isSuccess()) {
 ## Exception Handling
 
 ```php
-use pippa/NotificationSdkCurl\Exceptions\NotificationException;
+use Pippa\NotificationSdkCurl\Exceptions\NotificationException;
 
 try {
     $client->sendEmail('user@example.com', 'my_template');
@@ -107,12 +107,12 @@ try {
 
 ## Available Methods
 
-| Method | Description |
-|---|---|
-| `send(SendMessageRequest)` | Full control|
-| `sendEmail($email, $template, $data)` | Send email via template |
-| `sendSms($phone, $template, $data)` | Send SMS via template |
-| `sendInApp($userId, $template, $data)` | Send in-app notification |
+| Method                                       | Description                    |
+| -------------------------------------------- | ------------------------------ |
+| `send(SendMessageRequest)`                   | Full control                   |
+| `sendEmail($email, $template, $data)`        | Send email via template        |
+| `sendSms($phone, $template, $data)`          | Send SMS via template          |
+| `sendInApp($userId, $template, $data)`       | Send in-app notification       |
 | `sendMulti($recipients[], $template, $data)` | Multi-channel, multi-recipient |
 
 ---
@@ -120,7 +120,7 @@ try {
 ## Recipient Helpers
 
 ```php
-use pippa/NotificationSdkCurl\DTOs\Recipient;
+use Pippa\NotificationSdkCurl\DTOs\Recipient;
 
 Recipient::email('user@example.com')
 Recipient::phone('+8801700000000')
