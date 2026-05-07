@@ -1,6 +1,6 @@
 {
   "name": "pippa/notification-sdk-curl",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Notification Service SDK for plain PHP — zero dependencies, pure cURL",
   "type": "library",
   "license": "MIT",
