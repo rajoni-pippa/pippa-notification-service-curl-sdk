@@ -51,7 +51,7 @@ class NotificationClient
         ]));
     }
 
-    public function pippa/(
+    public function sendSms(
         string $phone,
         string $template,
         array $data = [],
@@ -153,6 +153,11 @@ class NotificationClient
         if ($statusCode >= 400) {
             $message = $body['message'] ?? "HTTP Error {$statusCode}";
             $errors = $body['errors'] ?? [];
+
+            if (!is_array($errors)) {
+                $errors = [$errors];
+            }
+
             throw new NotificationException($message, $statusCode, $errors);
         }
 

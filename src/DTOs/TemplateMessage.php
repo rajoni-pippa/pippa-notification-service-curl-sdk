@@ -2,17 +2,7 @@
 
 namespace Pippa\NotificationSdkCurl\DTOs;
 
-/**
- * Represents a template-based notification message.
- *
- * Usage (mirrors Courier SDK style):
- *
- *   new TemplateMessage([
- *       'to'       => [Recipient::email('user@example.com')],
- *       'template' => 'welcome_email',
- *       'data'     => ['name' => 'Rahim'],
- *   ])
- */
+
 class TemplateMessage
 {
     /** @var Recipient[] */
