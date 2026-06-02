@@ -51,6 +51,16 @@ $response = $client->sendSms(
 );
 ```
 
+### Send WhatsApp
+
+```php
+$response = $client->sendWhatsapp(
+    whatsapp:    '+8801700000000',
+    template: 'whatsapp_template',
+    data:     ['name' => 'Rahim']
+);
+```
+
 ### Send In-App Notification
 
 ```php

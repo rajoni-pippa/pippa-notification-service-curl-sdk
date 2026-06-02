@@ -51,7 +51,7 @@ class NotificationClient
         ]));
     }
 
-    public function sendSms(
+    public function pippa/(
         string $phone,
         string $template,
         array $data = [],
