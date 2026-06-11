@@ -55,9 +55,19 @@ $response = $client->sendSms(
 
 ```php
 $response = $client->sendWhatsapp(
-    whatsapp:    '+8801700000000',
+    whatsapp: '+8801700000000',
     template: 'whatsapp_template',
     data:     ['name' => 'Rahim']
+);
+```
+
+### Send Push Notification
+
+```php
+$response = $client->sendPush(
+    userId:   'user_123',
+    template: 'push_template',
+    data:     ['title' => 'Hello!', 'body' => 'You have a new message.']
 );
 ```
 
@@ -85,6 +95,7 @@ $response = $client->send(
                 Recipient::email('user@example.com'),
                 Recipient::phone('+8801700000000'),
                 Recipient::userId('user_123'),
+                Recipient::whatsapp('+8801747436390'),
             ],
             'template' => 'welcome_notification',
             'data'     => ['name' => 'Rahim'],
@@ -107,8 +118,8 @@ use Pippa\NotificationSdkCurl\Exceptions\NotificationException;
 try {
     $client->sendEmail('user@example.com', 'my_template');
 } catch (NotificationException $e) {
-    echo $e->getMessage();   // error message
-    echo $e->getCode();      // HTTP status code
+    echo $e->getMessage();    // error message
+    echo $e->getCode();       // HTTP status code
     print_r($e->getErrors()); // validation errors array
 }
 ```
@@ -122,6 +133,8 @@ try {
 | `send(SendMessageRequest)`                   | Full control                   |
 | `sendEmail($email, $template, $data)`        | Send email via template        |
 | `sendSms($phone, $template, $data)`          | Send SMS via template          |
+| `sendWhatsapp($whatsapp, $template, $data)`  | Send WhatsApp via template     |
+| `sendPush($userId, $template, $data)`        | Send push notification         |
 | `sendInApp($userId, $template, $data)`       | Send in-app notification       |
 | `sendMulti($recipients[], $template, $data)` | Multi-channel, multi-recipient |
 

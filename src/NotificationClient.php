@@ -83,6 +83,21 @@ class NotificationClient
         ]));
     }
 
+    public function sendPush(
+        string $push,
+        string $template,
+        array $data = [],
+        array $extra = []
+    ): NotificationResponse {
+        return $this->send(new SendMessageRequest([
+            'message' => new TemplateMessage([
+                'to' => [Recipient::push($push)],
+                'template' => $template,
+                'data' => $data,
+                ...$extra,
+            ]),
+        ]));
+    }
 
 
     public function sendInApp(

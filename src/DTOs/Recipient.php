@@ -36,6 +36,12 @@ class Recipient
     {
         return new static(['whatsapp' => $whatsapp]);
     }
+
+    public static function push(string $push): static
+    {
+        return new static(['push' => $push]);
+    }
+
     public static function userId(string $userId): static
     {
         return new static(['user_id' => $userId]);

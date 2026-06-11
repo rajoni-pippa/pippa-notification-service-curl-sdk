@@ -11,10 +11,14 @@ class NotificationException extends Exception
     public function __construct(
         string $message,
         int $code = 0,
-        array $errors = [],
+        array|string $errors = [],
         ?\Throwable $previous = null
     ) {
-        $this->errors = $errors;
+        if (is_string($errors)) {
+            $this->errors = !empty($errors) ? [$errors] : [];
+        } else {
+            $this->errors = $errors;
+        }
         parent::__construct($message, $code, $previous);
     }
 
