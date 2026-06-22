@@ -149,7 +149,7 @@ Recipient::email('user@example.com')
 Recipient::phone('+8801700000000')
 Recipient::userId('user_123')
 Recipient::make(['email' => '...', 'phone' => '...', 'user_id' => '...'])
-Recipient::make([...])->only(['email', 'sms'])  // restrict channels
+Recipient::make([...])->only(['email', 'sms'])  
 ```
 
 ---

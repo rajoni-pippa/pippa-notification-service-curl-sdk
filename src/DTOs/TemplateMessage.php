@@ -17,7 +17,6 @@ class TemplateMessage
 
     public function __construct(array $params)
     {
-        // 'to' can be a single Recipient or an array of Recipients
         $to = $params['to'] ?? [];
         $this->to = is_array($to) ? $to : [$to];
 

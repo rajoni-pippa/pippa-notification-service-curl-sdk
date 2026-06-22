@@ -17,9 +17,9 @@ class NotificationClient
     protected int $timeout;
 
     public function __construct(
-        string $baseUrl,
-        string $apiKey,
-        string $secretKey,
+        string $baseUrl = 'https://naas.api.pippasync.com',
+        string $apiKey = '',
+        string $secretKey = '',
         int $timeout = 30
     ) {
         $this->baseUrl = rtrim($baseUrl, '/');
@@ -92,6 +92,38 @@ class NotificationClient
         return $this->send(new SendMessageRequest([
             'message' => new TemplateMessage([
                 'to' => [Recipient::push($push)],
+                'template' => $template,
+                'data' => $data,
+                ...$extra,
+            ]),
+        ]));
+    }
+
+    public function sendSlack(
+        string $slack,
+        string $template,
+        array $data = [],
+        array $extra = []
+    ): NotificationResponse {
+        return $this->send(new SendMessageRequest([
+            'message' => new TemplateMessage([
+                'to' => [Recipient::slack($slack)],
+                'template' => $template,
+                'data' => $data,
+                ...$extra,
+            ]),
+        ]));
+    }
+
+    public function sendDiscord(
+        string $discord,
+        string $template,
+        array $data = [],
+        array $extra = []
+    ): NotificationResponse {
+        return $this->send(new SendMessageRequest([
+            'message' => new TemplateMessage([
+                'to' => [Recipient::discord($discord)],
                 'template' => $template,
                 'data' => $data,
                 ...$extra,

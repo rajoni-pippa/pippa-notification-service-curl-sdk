@@ -20,7 +20,6 @@ class Recipient
         $this->data = array_filter($data, fn($v) => $v !== null && $v !== '');
     }
 
-    // ── Static constructors ──────────────────────────────────
 
     public static function email(string $email): static
     {
@@ -40,6 +39,16 @@ class Recipient
     public static function push(string $push): static
     {
         return new static(['push' => $push]);
+    }
+
+    public static function discord(string $discord): static
+    {
+        return new static(['discord' => $discord]);
+    }
+
+    public static function slack(string $slack): static
+    {
+        return new static(['slack' => $slack]);
     }
 
     public static function userId(string $userId): static
